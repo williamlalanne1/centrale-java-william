@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.centrale.cli'
+version = 'unspecified'
+
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'org.centrale.cli.App'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.centrale.cli.App'
+    }
+}
+
+run {
+    standardInput = System.in
+}
+
+dependencies {
+    implementation project(path: ':domain')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+}
+
+test {
+    useJUnitPlatform()
+}
